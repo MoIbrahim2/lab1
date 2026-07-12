@@ -1,9 +1,11 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, HttpCode } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, HttpCode, UseGuards } from '@nestjs/common';
 import { CateogryService } from './cateogry.service';
 import { CreateCateogryDto } from './dto/create-cateogry.dto';
 import { UpdateCateogryDto } from './dto/update-cateogry.dto';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
 @Controller('categories')
+@UseGuards(JwtAuthGuard)
 export class CateogryController {
   constructor(private readonly cateogryService: CateogryService) { }
 
